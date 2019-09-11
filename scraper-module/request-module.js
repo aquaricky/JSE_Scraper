@@ -19,6 +19,7 @@ const url = 'https://en.wikipedia.org/wiki/List_of_Presidents_of_the_United_Stat
 // Support Methods
 // =============================================================================
 
+//Provides the raw html of the webpage.
 this.sendurlrequest = function (){
   rp(url)
   .then(function(html){
