@@ -20,3 +20,4 @@ const request_module = require('./scraper-module/request-module.js');
 //==============================================================================
 
 request_module.sendurlrequest();
+request_module.sendurlrequestDynamic();
