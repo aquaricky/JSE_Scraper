@@ -11,7 +11,7 @@
 // =============================================================================
 
 // Add the required system Packages
-const request_module = require('./request-module/request-module.js');
+const request_module = require('./scraper-module/request-module.js');
 
 //Load config file or in environment variables using process.env.PORT
 //var config  = require(''); //Set this as the config js file
