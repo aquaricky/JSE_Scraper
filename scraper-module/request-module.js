@@ -10,10 +10,10 @@
 const rp = require('request-promise');
 const $ = require('cheerio');
 const puppeteer = require('puppeteer');
+const fr = require('./support_modules/filereader.js');
 
 //list various URLs to scrape .. try and move this to a config file.
-const static_url = 'https://en.wikipedia.org/wiki/List_of_Presidents_of_the_United_States';
-const dynamic_url = 'https://www.reddit.com';
+const urlConfigFile = './config/urlconfig.json';
 
 //Configuring custom logger
 //==============================================================================
@@ -61,4 +61,8 @@ this.sendurlrequestDynamic = function(){
   .catch(function(err) {
     //handle error
   });
+}
+
+this.webScraper(){
+  //Logic to iterate through the config file and scrape all the sites using the appropriate methods
 }

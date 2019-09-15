@@ -4,13 +4,15 @@
        {
           "id": "01",
           "url": "https://en.wikipedia.org/wiki/List_of_Presidents_of_the_United_States",
-          "block_emelent": "big > a"
+          "blockEmelent": "big > a",
+          "pageType":"STATIC"
        },
  
        {
           "id": "02",
           "url": "https://www.reddit.com",
-          "block_emelent": "h3"
+          "blockEmelent": "h3",
+          "pageType":"DYNAMIC"
        }
     ]
  }
