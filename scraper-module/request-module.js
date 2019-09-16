@@ -12,8 +12,9 @@ const $ = require('cheerio');
 const puppeteer = require('puppeteer');
 const fr = require('./support_modules/filereader.js');
 
-//list various URLs to scrape .. try and move this to a config file.
-const urlConfigFile = './config/urlconfig.json';
+//CONFIG FILES
+// =============================================================================
+const urlConfigFile = './config/urlconfig.json'; // file containing the urls to scrape
 
 //Configuring custom logger
 //==============================================================================
@@ -63,6 +64,6 @@ this.sendurlrequestDynamic = function(){
   });
 }
 
-this.webScraper(){
+function webScraper(){
   //Logic to iterate through the config file and scrape all the sites using the appropriate methods
 }
