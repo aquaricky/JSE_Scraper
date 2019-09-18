@@ -4,6 +4,7 @@
        {
           "id": "01",
           "url": "https://en.wikipedia.org/wiki/List_of_Presidents_of_the_United_States",
+          "urltag":"WIKIPEDIA",
           "blockEmelent": "big > a",
           "pageType":"STATIC"
        },
@@ -11,6 +12,7 @@
        {
           "id": "02",
           "url": "https://www.reddit.com",
+          "urltag":"REDDIT",
           "blockEmelent": "h3",
           "pageType":"DYNAMIC"
        }

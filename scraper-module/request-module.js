@@ -10,11 +10,13 @@
 const rp = require('request-promise');
 const $ = require('cheerio');
 const puppeteer = require('puppeteer');
-const fr = require('./support_modules/filereader.js');
+const fr = require('../support_modules/filereader.js');
 
 //CONFIG FILES
 // =============================================================================
 const urlConfigFile = './config/urlconfig.json'; // file containing the urls to scrape
+dynamic_url = "https://www.reddit.com" //remove
+static_url = "https://en.wikipedia.org/wiki/List_of_Presidents_of_the_United_States" //remove
 
 //Configuring custom logger
 //==============================================================================
@@ -25,7 +27,7 @@ const urlConfigFile = './config/urlconfig.json'; // file containing the urls to 
 
 //Scrapes static web pages
 //requires a static url and the tag expression to filter by
-this.sendurlrequest = function (){
+this.sendurlrequestStatic = function (){
   rp(static_url)
   .then(function(html){
     //success!
@@ -39,7 +41,6 @@ this.sendurlrequest = function (){
     //handle error
   });
 }
-
 
 //Scrapes Dynamic webpages
 //requires a dynamic url and the tag expression to filter by
@@ -65,5 +66,33 @@ this.sendurlrequestDynamic = function(){
 }
 
 function webScraper(){
+
+  //init a results array to store app the processed info
+
   //Logic to iterate through the config file and scrape all the sites using the appropriate methods
+
+  //pass each into an appropriate function
+
+  //process the URLS and then add them into an array to be sent to the database.
 }
+
+//new methods
+// =============================================================================
+async function sendurlrequestStatic2 (url,blockEmelent){  //Needs testing
+  return await rp(url).then(function(html){
+    const resultsUrls = [];
+    for (let i = 0; i < 45; i++) {
+      resultsUrls.push($('big > a', html)[i].attribs.href);
+    }
+    return(resultsUrls);
+  },(err)=>{return(err)}
+  ).catch((err)=> {throw new Error(err.message)})
+}
+
+async function sendurlrequestDynamic2 (url,blockEmelent){
+ return await puppeteer.launch()
+}
+
+//Export module
+// =============================================================================
+module.exports = {sendurlrequestStatic2,sendurlrequestDynamic2};

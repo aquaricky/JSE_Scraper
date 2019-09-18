@@ -19,5 +19,11 @@ const request_module = require('./scraper-module/request-module.js');
 //Configuring custom logger
 //==============================================================================
 
+
+//TEST
+//====================
 //request_module.sendurlrequest();
 //request_module.sendurlrequestDynamic();
+let static_url = "https://en.wikipedia.org/wiki/List_of_Presidents_of_the_United_States" //remove
+let eleBlock = "big > a"
+request_module.sendurlrequestStatic2(static_url,eleBlock).then((res)=> console.log(res)).catch((err)=> console.log(err.message))
