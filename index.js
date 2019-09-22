@@ -25,5 +25,10 @@ const request_module = require('./scraper-module/request-module.js');
 //request_module.sendurlrequest();
 //request_module.sendurlrequestDynamic();
 let static_url = "https://en.wikipedia.org/wiki/List_of_Presidents_of_the_United_States" //remove
-let eleBlock = "big > a"
-request_module.sendurlrequestStatic2(static_url,eleBlock).then((res)=> console.log(res)).catch((err)=> console.log(err.message))
+let eleBlock1 = "big > a"
+
+let dynamic_url = "https://www.reddit.com" //remove
+let eleBlock2 = 'h3'
+
+request_module.sendurlrequestStatic2(static_url,eleBlock1).then((res)=> console.log(res)).catch((err)=> console.log(err.message))
+//request_module.sendurlrequestDynamic2(dynamic_url,eleBlock2).then((res)=> console.log(res)).catch((err)=> console.log(err.message))

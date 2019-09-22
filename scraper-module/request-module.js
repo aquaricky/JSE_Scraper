@@ -90,7 +90,7 @@ async function sendurlrequestStatic2 (url,blockEmelent){  //Needs testing
 }
 
 async function sendurlrequestDynamic2 (url,blockEmelent){
- return await puppeteer.launch()
+  return await puppeteer.launch()
 }
 
 //Export module
