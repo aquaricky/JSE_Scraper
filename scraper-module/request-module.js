@@ -24,75 +24,39 @@ static_url = "https://en.wikipedia.org/wiki/List_of_Presidents_of_the_United_Sta
 
 // Support Methods
 // =============================================================================
+async function sendurlrequestStatic2 (url,blockElement){  //Needs testing
+  try{
+    let content = await rp(url)
 
-//Scrapes static web pages
-//requires a static url and the tag expression to filter by
-this.sendurlrequestStatic = function (){
-  rp(static_url)
-  .then(function(html){
-    //success!
-    const wikiUrls = [];
-    for (let i = 0; i < 45; i++) {
-      wikiUrls.push($('big > a', html)[i].attribs.href);
-    }
-    console.log(wikiUrls);
-  })
-  .catch(function(err){
-    //handle error
+    let results = await scrape(content,blockElement)//pass the HTML content to cheerio to be scraped 
+    return await results; //return the results form cheerio;
+  }catch(err){
+    throw new Error(err.message)
+  }
+}
+
+async function sendurlrequestDynamic2 (url,blockElement){
+  try{
+    let browser = await puppeteer.launch(); //launch puppeteer browser
+    let page = await browser.newPage(); //open a new page in the browser
+    await page.goto(url); //go to the given url from the params
+    let content = await page.content(); //save the contents of the page
+    await browser.close(); //close thr browser instance after we are done
+    let results = await scrape(content,blockElement)//pass the HTML content to cheerio to be scraped 
+    return await results; //return the results form cheerio;
+  }catch(err){
+    throw new Error(err.message); //catch and pass on any error messages
+  }
+}
+
+async function scrape (html,blockElement){
+  let resultsArray = [] 
+  await $(blockElement, html).each(function() {
+    resultsArray.push($(this).text());
+    //console.log($(this).text());
   });
+  return await resultsArray
 }
-
-//Scrapes Dynamic webpages
-//requires a dynamic url and the tag expression to filter by
-this.sendurlrequestDynamic = function(){
-  puppeteer
-  .launch()
-  .then(function(browser) {
-    return browser.newPage();
-  })
-  .then(function(page) {
-    return page.goto(dynamic_url).then(function() {
-      return page.content();
-    });
-  })
-  .then(function(html) {
-    $('h3', html).each(function() {
-      console.log($(this).text());
-    });
-  })
-  .catch(function(err) {
-    //handle error
-  });
-}
-
-function webScraper(){
-
-  //init a results array to store app the processed info
-
-  //Logic to iterate through the config file and scrape all the sites using the appropriate methods
-
-  //pass each into an appropriate function
-
-  //process the URLS and then add them into an array to be sent to the database.
-}
-
-//new methods
-// =============================================================================
-async function sendurlrequestStatic2 (url,blockEmelent){  //Needs testing
-  return await rp(url).then(function(html){
-    const resultsUrls = [];
-    for (let i = 0; i < 45; i++) {
-      resultsUrls.push($('big > a', html)[i].attribs.href);
-    }
-    return(resultsUrls);
-  },(err)=>{return(err)}
-  ).catch((err)=> {throw new Error(err.message)})
-}
-
-async function sendurlrequestDynamic2 (url,blockEmelent){
-  return await puppeteer.launch()
-}
-
 //Export module
 // =============================================================================
-module.exports = {sendurlrequestStatic2,sendurlrequestDynamic2};
+module.exports = {sendurlrequestStatic2,sendurlrequestDynamic2,scrape};
