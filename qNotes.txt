@@ -1,30 +1,20 @@
-Notes on Proper new promise usage:
-Create an initial promise function
-add await before this promise so it is picked up by its parent function
-use return statement to pass on values across then statemenst
-use resolve & reject in a then bracket to pass final data back from the initial promise to an outside var
-add only one catch at the very end to catch all rejects or errors (will also catch errors in the following then statements)
+Objectives 1 (DB store):
+Every day at xpm it scrapes the JSE site
+Stores the links in an array
+links are checked in the database to see if they are new or not
+old links are removed and new links are kept
+new links are sent to a database
+(auto increment the database)
 
+Objective 2(front end + Native app)
+Create a simple react app to show the  links and the link dates
+highlight new links and place them at the top (use SQL)
+Allow the user to click on a link and remove the new status so that it is marked as seen
 
-you can return teh initial promise as the results of a function or assign it to a variable and return teh variable 
-this initial funtion has to be asyc tho. 
+Objective 3(Push notification):
+Scan the database for links entered on the day
+send a push notification if a new entry was made
 
-
-
-Notes on Proper promise function usage: 
-
-functions from external libraries that use promises self resolve.
-the additional then functions get passed the results of the initial function 
-returns from the chaining then functions are what is returned to the  top level functions await 
-
-example:
-async function sendurlrequestStatic2 (url,blockEmelent){  // initial function definition
-  return await rp(url) //returning await promise function
-  .then(function(html){ //the resolving then statement has 2 functions one that resolves on success
-    resolve(html) //resolveing sets the return value of the promise
-  },(err)=>reject(err) //and another that rejects on failure
-  ).then(<function>) // additional thens can be stacked as long as they dont call resolve they wont change the returning value of the promise, note a return statement in a then simply changes the result value passed to the following then statement chained to it
-  .catch((err)=> {throw new Error(err.message)}) //rejection is caught by this catch
-}
-
-=================================================================================
+Objective 4(Clean up)
+Add production level things to the nodejs app:
+-Logging

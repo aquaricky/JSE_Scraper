@@ -3,18 +3,34 @@
  
        {
           "id": "01",
-          "url": "https://en.wikipedia.org/wiki/List_of_Presidents_of_the_United_States",
-          "urltag":"WIKIPEDIA",
-          "blockEmelent": "big > a",
-          "pageType":"STATIC"
+          "url": "https://www.jamstockex.com/category/main-market-prospectus/",
+          "urltag":"MainMarkets",
+          "blockEmelent": "article > header",
+          "pageType":"DYNAMIC"
        },
  
        {
           "id": "02",
-          "url": "https://www.reddit.com",
-          "urltag":"REDDIT",
-          "blockEmelent": "h3",
+          "url": "https://www.jamstockex.com/category/junior-market-prospectus/",
+          "urltag":"JrMarkets",
+          "blockEmelent": "article > header",
           "pageType":"DYNAMIC"
-       }
+       },
+
+       {
+         "id": "03",
+         "url": "https://www.jamstockex.com/category/bond-prospectus/",
+         "urltag":"Bonds",
+         "blockEmelent": "article > header",
+         "pageType":"DYNAMIC"
+      },
+
+      {
+         "id": "04",
+         "url": "https://www.jamstockex.com/category/usd-prospectus/",
+         "urltag":"USMarkets",
+         "blockEmelent": "article > header",
+         "pageType":"DYNAMIC"
+      }
     ]
  }
