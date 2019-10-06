@@ -5,7 +5,7 @@
           "id": "01",
           "url": "https://www.jamstockex.com/category/main-market-prospectus/",
           "urltag":"MainMarkets",
-          "blockEmelent": "article > header",
+          "blockElement": "article > header",
           "pageType":"DYNAMIC"
        },
  
@@ -13,7 +13,7 @@
           "id": "02",
           "url": "https://www.jamstockex.com/category/junior-market-prospectus/",
           "urltag":"JrMarkets",
-          "blockEmelent": "article > header",
+          "blockElement": "article > header",
           "pageType":"DYNAMIC"
        },
 
@@ -21,7 +21,7 @@
          "id": "03",
          "url": "https://www.jamstockex.com/category/bond-prospectus/",
          "urltag":"Bonds",
-         "blockEmelent": "article > header",
+         "blockElement": "article > header",
          "pageType":"DYNAMIC"
       },
 
@@ -29,7 +29,7 @@
          "id": "04",
          "url": "https://www.jamstockex.com/category/usd-prospectus/",
          "urltag":"USMarkets",
-         "blockEmelent": "article > header",
+         "blockElement": "article > header",
          "pageType":"DYNAMIC"
       }
     ]
