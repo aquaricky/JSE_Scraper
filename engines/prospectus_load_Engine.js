@@ -33,12 +33,9 @@ function load(){
 	let urlConfig = fr.syncjsonReader(urlConfigFile);
 
 	for (i in urlConfig.urlconfig) {
-		console.log(urlConfig.urlconfig[i].url);
-		console.log(urlConfig.urlconfig[i].blockElement);
-		console.log(urlConfig.urlconfig[i].pageType);
-
-		build(urlConfig.urlconfig[i].url,urlConfig.urlconfig[i].blockElement,urlConfig.urlconfig[i].pageType)
-		console.log('Sending build function to cron job')
+		//build(urlConfig.urlconfig[i].url,urlConfig.urlconfig[i].blockElement,urlConfig.urlconfig[i].pageType)
+		CronJob.loadJob('* 1/5 * * * *'
+			,build(urlConfig.urlconfig[i].url,urlConfig.urlconfig[i].blockElement,urlConfig.urlconfig[i].pageType))
 	}
 }
 
@@ -48,7 +45,7 @@ async function build(url,blockElement,type){
 }
 
 function startEngine(cronExpression,cb){
-	load();
+	 load();
 	console.log('prospectus engine has started...');
 }
 
